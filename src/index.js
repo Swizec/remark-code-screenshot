@@ -23,7 +23,8 @@ function codeScreenshot() {
             for (const { node } of nodesToChange) {
                 try {
                     const url = await getCodeScreenshot(node.value);
-                    node.value = url;
+                    node.type = "image";
+                    node.url = url;
                 } catch (e) {
                     console.log("ERROR", e);
                     return reject(e);

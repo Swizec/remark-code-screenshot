@@ -1,6 +1,6 @@
 import expect from "expect";
 import fetchMock from "fetch-mock";
-import remark from 'remark'
+import remark from "remark";
 
 import codeScreenshot from "src/index";
 
@@ -11,10 +11,15 @@ describe("code blocks", () => {
     );
 
     it("converts code blocks into carbon.now.sh screenshots", done => {
-        remark().use(codeScreenshot).process('```\nconst bla = "hello world";\n```', function (err, output) {
-            const result = output.contents;
-            expect(result).toEqual("    https://this.is.the.result.url");
-            done();
-        })
+        remark()
+            .use(codeScreenshot)
+            .process('```\nconst bla = "hello world";\n```', function(
+                err,
+                output
+            ) {
+                const result = output.contents;
+                expect(result).toEqual("    https://this.is.the.result.url");
+                done();
+            });
     });
 });
