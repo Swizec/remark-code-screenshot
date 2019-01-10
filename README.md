@@ -29,4 +29,4 @@ remark()
 
 Outputs something like this:
 
-![]()
+![](https://github.com/Swizec/remark-code-screenshot/blob/master/screenshot-1547104367079.png?raw=true)
