@@ -1,7 +1,10 @@
 module.exports = {
-  type: 'web-module',
-  npm: {
-    esModules: true,
-    umd: false
-  }
+    type: 'web-module',
+    npm: {
+        esModules: true,
+        umd: false
+    },
+    karma: {
+        browsers: ['Chrome']
+    }
 }

@@ -1,9 +1,20 @@
-import expect from 'expect'
+import expect from "expect";
+import fetchMock from "fetch-mock";
+import remark from 'remark'
 
-import message from 'src/index'
+import codeScreenshot from "src/index";
 
-describe('Module template', () => {
-  it('displays a welcome message', () => {
-    expect(message).toContain('Welcome to remark-code-screenshot')
-  })
-})
+describe("code blocks", () => {
+    fetchMock.get(
+        "glob:https://*screenshot-as-a-service-dev-screenshot-function*",
+        "https://this.is.the.result.url"
+    );
+
+    it("converts code blocks into carbon.now.sh screenshots", done => {
+        remark().use(codeScreenshot).process('```\nconst bla = "hello world";\n```', function (err, output) {
+            const result = output.contents;
+            expect(result).toEqual("    https://this.is.the.result.url");
+            done();
+        })
+    });
+});
