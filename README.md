@@ -1,16 +1,32 @@
 # remark-code-screenshot
 
-[![Travis][build-badge]][build]
-[![npm package][npm-badge]][npm]
-[![Coveralls][coveralls-badge]][coveralls]
+Remark plugin to convert code blocks into carbon.now.sh screenshots.
 
-Describe remark-code-screenshot here.
+## Basic Usage
 
-[build-badge]: https://img.shields.io/travis/user/repo/master.png?style=flat-square
-[build]: https://travis-ci.org/user/repo
+```javascript
+import remark from 'remark'
+import codeScreenshot from 'remark-code-screenshot'
 
-[npm-badge]: https://img.shields.io/npm/v/npm-package.png?style=flat-square
-[npm]: https://www.npmjs.org/package/npm-package
+const markdownInput = ["\`\`\`
+    import remark from 'remark'
+    import codeScreenshot from 'remark-code-screenshot'
 
-[coveralls-badge]: https://img.shields.io/coveralls/user/repo/master.png?style=flat-square
-[coveralls]: https://coveralls.io/github/user/repo
+    const markdownInput = \"\"
+
+    remark().use(codeScreenshot)
+    .process(markdownInput, function (err, output) {
+        console.log(output)
+    })
+\`\`\`"]
+
+remark()
+    .use(codeScreenshot)
+    .process(markdownInput, function (err, output) {
+        console.log(output)
+    });
+```
+
+Outputs something like this:
+
+![]()
